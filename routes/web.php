@@ -25,5 +25,7 @@ Route::get('/datadokter/hapus/{id}','DatadokterController@hapus');
 Route::get('/besarpotensi/home','BesarPotensiController@home');
 Route::post('/besarpotensi/store','BesarPotensiController@store');
 Route::get('/besarpotensi/input_potensi/{id}','BesarPotensiController@input_potensi');
+Route::post('/besarpotensi/hitung','BesarPotensiController@hitung');
+
 
 

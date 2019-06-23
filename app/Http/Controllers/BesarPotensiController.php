@@ -24,21 +24,23 @@ class BesarPotensiController extends Controller
 		return view('inputbesarpotensi',['dokter'=> $dokter]);
 	}
 
-   
-    public function store(Request $request)
-    {
-		// insert data ke table besar_potensi
+	public function hitung(Request $request){
 
-		
-	    DB::table('besar_potensi')->insert([
-		    'nama' => $request->nama,
-		    'banyak_produk' => $request->bayak_produk,
-            'h_obat_sejenis' => $request->h_obat_sejenis,
-		    'h_obat_sejenis_resep' => $request->h_obat_sejenis_resep,
-		    'jum_hari_praktek' => $request->jum_hari_praktek
-            
-	    ]);
-	    // alihkan halaman ke halaman pegawai
-	    return redirect('/datadokter');
-    }
+
+		$dokter = DB::table('dokter')->get();
+ 
+		// Ambil variabel dari form
+	$a = $request->jum_hari_prak;
+	$b = $request->harga_obat_sejenis;
+	$c = $request->harga_obat_sejenis_resep;
+	$d = $request->jumlah_hari_praktek;
+	$e = $request->harga_obat;
+	
+	$potensi_peresepan = $a * $b * $c * $d * $e;
+	
+		return view('hasilhitung',compact('potensi_peresepan','dokter'));
+
+	}
+   
+   
 }
